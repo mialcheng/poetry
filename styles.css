@@ -4,11 +4,45 @@
   
   body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f8f1e8;
     color: var(--slate-blue);
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
+  }
+  h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+  }
+  h2 {
+    font-size: 3rem;
+    font-weight: 2rem;
+    color: var(--slate-blue);
+    padding: 0;
+    margin: 0;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--slate-blue);
+    padding: 0;
+    margin: 0;
+}
+h4 {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #7CA5B8;
+    padding: 0;
+    margin: 0;
+}
+  p {
+    font-family: 'Inter', sans-serif;
+    word-spacing: 1px;
+    line-height: 1.5;
+    font-size: 1.6vh;
   }
   
   .landing {
@@ -82,14 +116,17 @@
     text-align: center;
     justify-content: center;
   }
-
-  .page.title .front .titletext h3{
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: #fff;
-    padding: 0;
-    margin: 0;
+  .page.title .back {
+    display: flex; 
+    flex-direction: column;
+    background: var(--slate-blue);
+    color: rgb(211, 211, 211); 
+    width: 90%;
+    height: 90%;
+    text-align: center;
+    justify-content: center;
   }
+
   .page.title .front .authortext p{
     font-size: 1rem;
     color: #c4c4c4;
@@ -104,10 +141,13 @@
   
 /* chapter page */
   .page.chapter-start .front {
+    display: flex; 
+    flex-direction: column;
     width: 90%;
     height: 90%;
     justify-content: center;
     text-align: center;
+    align-items: center;
   }
   .page.chapter-start .front img{
     max-height: 50vh;

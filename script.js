@@ -6,22 +6,31 @@ document.addEventListener("DOMContentLoaded", () => {
   
     const updateBookPosition = () => {
         // Center the book if the book is opened (not at the first or last page)
-        if (currentPage === 0 || currentPage === pages.length) {
+        if (currentPage === 0) {
           bookContainer.classList.add("center");
           bookContainer.classList.remove("shift-right");
         } else {
           bookContainer.classList.add("shift-right");
           bookContainer.classList.remove("center");
         }
+
       };
   
     const flipForward = () => {
       if (currentPage < pages.length) {
         pages[currentPage].classList.add("flipped");
-        togglePageVisibility(currentPage, true); // Front hidden, back visible
+        togglePageVisibility(currentPage, true); 
         currentPage++;
         updateZIndex();
         updateBookPosition();
+      }
+      else if (currentPage >= pages.length - 2) {
+        pages[currentPage].classList.add("flipped");
+        togglePageVisibility(currentPage, true); 
+        currentPage++;
+        updateZIndex();
+        bookContainer.classList.remove("shift-right");
+        bookContainer.classList.add("center");
       }
     };
   
