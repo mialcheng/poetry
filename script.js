@@ -4,28 +4,46 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentPage = 0;
   
     const updateBookPosition = () => {
-        if (currentPage === 0 || currentPage === pages.length) {
-            book-container.classList.add("center");
-            book-container.classList.remove("shift-left");
-        } else {
-            book-container.classList.add("shift-left");
-            book-container.classList.remove("center");
-        }
-      };
+      if (currentPage === 0 || currentPage === pages.length) {
+        book.classList.add("center");
+        book.classList.remove("shift-left");
+      } else {
+        book.classList.add("shift-left");
+        book.classList.remove("center");
+      }
+    };
   
     const flipForward = () => {
       if (currentPage < pages.length) {
         pages[currentPage].classList.add("flipped");
+        togglePageVisibility(currentPage, true); // Front hidden, back visible
         currentPage++;
+        updateZIndex();
         updateBookPosition();
       }
     };
   
     const flipBackward = () => {
-      if (currentPage > 0) {
-        currentPage--;
-        pages[currentPage].classList.remove("flipped");
-        updateBookPosition();
+        if (currentPage > 0) {
+          currentPage--;
+          pages[currentPage].classList.remove("flipped");
+          togglePageVisibility(currentPage, false); // Back hidden, front visible
+          updateZIndex();
+          updateBookPosition();
+        }
+      };
+    
+  
+    const togglePageVisibility = (index, flipForward) => {
+      const front = pages[index].querySelector(".front");
+      const back = pages[index].querySelector(".back");
+  
+      if (flipForward) {
+        front.style.visibility = "hidden";
+        back.style.visibility = "visible";
+      } else {
+        front.style.visibility = "visible";
+        back.style.visibility = "hidden";
       }
     };
   
@@ -51,9 +69,25 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Scroll to book section
     document.querySelector(".scroll-down").addEventListener("click", () => {
-      document.querySelector(".book-container").scrollIntoView({ behavior: "smooth" });
+      document
+        .querySelector(".book-container")
+        .scrollIntoView({ behavior: "smooth" });
     });
-
+  
+    const updateZIndex = () => {
+        pages.forEach((page, index) => {
+          if (page.classList.contains("flipped")) {
+            page.style.zIndex = index;
+          } else {
+            page.style.zIndex = pages.length - index;
+          }
+        });
+      };
+      
+  
+    // Initial z-index setup
+    updateZIndex();
+  
     updateBookPosition();
   });
   
