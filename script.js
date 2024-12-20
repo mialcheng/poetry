@@ -2,16 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const pages = document.querySelectorAll(".page");
     const book = document.querySelector(".book");
     let currentPage = 0;
+    const bookContainer = document.querySelector(".book-container"); 
   
     const updateBookPosition = () => {
-      if (currentPage === 0 || currentPage === pages.length) {
-        book.classList.add("center");
-        book.classList.remove("shift-left");
-      } else {
-        book.classList.add("shift-left");
-        book.classList.remove("center");
-      }
-    };
+        // Center the book if the book is opened (not at the first or last page)
+        if (currentPage === 0 || currentPage === pages.length) {
+          bookContainer.classList.add("center");
+          bookContainer.classList.remove("shift-right");
+        } else {
+          bookContainer.classList.add("shift-right");
+          bookContainer.classList.remove("center");
+        }
+      };
   
     const flipForward = () => {
       if (currentPage < pages.length) {
@@ -85,9 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       
   
-    // Initial z-index setup
     updateZIndex();
-  
     updateBookPosition();
   });
   
