@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentPage = 0;
     const bookContainer = document.querySelector(".book-container");
     const sidebarItems = document.querySelectorAll(".sidebar li");
-    const sidebar = document.querySelector(".sidebar"); // Moved out for better access
+    const sidebar = document.querySelector(".sidebar"); 
 
     const updateBookPosition = () => {
         if (currentPage === 0) {

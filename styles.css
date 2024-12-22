@@ -42,7 +42,7 @@ h4 {
     font-family: 'Inter', sans-serif;
     word-spacing: 1px;
     line-height: 1.5;
-    font-size: 1.4vh;
+    font-size: 1.6vh;
   }
   
   .landing {
@@ -130,7 +130,7 @@ h4 {
     font-size: 1rem;
     color: #c4c4c4;
     position: relative;
-    transform: translateY(30vh);
+    transform: translateY(20vh);
   }
 
   .page.title .back{
